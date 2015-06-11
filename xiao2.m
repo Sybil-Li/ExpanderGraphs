@@ -11,25 +11,28 @@ eigZZ = zeros(1,length(degrees));
 
 for i = 1:length(degrees)
     R = randRegular(Rsize, degrees(i));
-    eigvalues = eig(R);
-    eigR(i) = eigvalues(Rsize-1)/degrees(i);
+    eigvalues = eig(R/degrees(i));
+    eigR(i) = eigvalues(Rsize-1);
     
     Aw = awfulGraph(degrees(i));
-    eigvalues = eig(Aw);
-    eigAw2(i) = eigvalues(degrees(i)-1)/(degrees(i)-1);
+    eigvalues = eig(Aw*Aw/(degrees(i)-1)/(degrees(i)-1));
+    eigAw2(i) = eigvalues(degrees(i)-1);
     
     zzprod = zigzag(R,Aw);
-    eigvalues = eig(zzprod);
-    eigZZ(i) = eigvalues(Rsize*degrees(i)-1)/((degrees(i)-1)^2);
+    eigvalues = eig(zzprod/(degrees(i)-1)^2);
+    eigZZ(i) = eigvalues(Rsize*degrees(i)-1);
 end
 
 x = 1:length(degrees);
 figure
-plot( x,eigAw2.*eigAw2,'-x', x,eigZZ,'-*')
+plot(x,eigR,'-o', x,eigAw2,'-x', x,eigZZ,'-*')
+legend('eigR','eigAw^2', 'eigZZ');
+figure
+plot(x,eigAw2,'-x', x,eigZZ,'-*')
 legend('eigAw^2', 'eigZZ');
-%  
+ 
 % eigR
-% eigC2
+% eigAw2
 % eigZZ
 end
 
