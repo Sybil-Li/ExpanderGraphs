@@ -3,11 +3,11 @@ function [ eigZZ ] = xiaosingledegree(Rsize, d)
 %Compute the second largest eigenvalue of the normalized adjacency matrix
 %of the zigzag product of a random regular graph and a cyclic graph
 
-eigR = zeros(1,1000);
-eigC2 = zeros(1,1000);
-eigZZ = zeros(1,1000);
+eigR = zeros(1,100);
+eigC2 = zeros(1,100);
+eigZZ = zeros(1,100);
 
-for i = 1:1000
+for i = 1:100
     R = randRegular(Rsize, d);
     eigvalues = eig(R/d);
     eigR(i) = eigvalues(Rsize-1);
