@@ -10,19 +10,19 @@ function [ ] = master()
 table = f1(140);
 save('set1R140.mat','table','-mat');
 
-% % set3,4,5 with degree increment of 10
-% table = f3s(3);
-% save('set3C3s.mat','table','-mat');
-% table = f3s(5);
-% save('set3C3s.mat','table','-mat');
-% table = f3s(7);
-% save('set3C3s.mat','table','-mat');
-% 
-% % set3,4,5 with degree increment of *10
-% table = f3l(3);
-% save('set3C3l.mat','table','-mat');
-% table = f3s(5);
-% save('set3C3l.mat','table','-mat');
-% table = f3s(7);
-% save('set3C3l.mat','table','-mat');
+% set3,4,5 with degree increment of 10
+table = f3s(3);
+save('set3C3s.mat','table','-mat');
+table = f3s(5);
+save('set3C5s.mat','table','-mat');
+table = f3s(7);
+save('set3C7s.mat','table','-mat');
+
+% set3,4,5 with degree increment of *10
+table = f3l(3);
+save('set3C3l.mat','table','-mat');
+table = f3l(5);
+save('set3C5l.mat','table','-mat');
+table = f3l(7);
+save('set3C7l.mat','table','-mat');
 end
