@@ -1,0 +1,62 @@
+function [ table ] = f1(Rsize)
+%Verifying Xiao's results
+%Compute the second largest eigenvalue of the normalized adjacency matrix
+%of the zigzag product of a random regular graph and a cyclic graph
+
+eigX = zeros(1,100);
+eigY2 = zeros(1,100);
+eigZZ = zeros(1,100);
+eigG = zeros(1,100);
+
+for j = 1:(Rsize/10)
+    degree = j*10 + 1;
+    if (mode == 1)
+        dY = ceil(sqrt(degree));
+    else
+        dY = ceil(log(degree));
+
+    for i = 1:100
+        X = randRegular(Rsize, degree);
+        eigvalues = eig(X);
+        eigR(i) = eigvalues(Rsize-1);
+
+        Y = randRegular(degree, dY);
+        eigvalues = eig(Y*Y);
+        eigR(i) = eigvalues(degree-1);
+        
+        zzprod = zigzag(X,C);
+%         if (length(zzprod) < 3000)
+%             eigvalues = eig(zzprod);
+%             eigZZ(i) = eigvalues(Rsize*degree-1);
+%         else
+            eigZZ(i) = powerMethod(zzprod,4,0.000001);
+%         end
+        
+        G = randRegular(Rsize*degree, 4);
+%         if (length(G) < 3000)
+%             eigvalues = eig(G);
+%             eigG(i) = eigvalues(Rsize*degree-1);
+%         else
+            eigG(i) = powerMethod(G,4,0.000001);
+%         end
+            
+            
+    end
+    meanR(j) = mean(eigR);
+    meanY2(j) = mean(eigY2);
+    meanZZ(j) = mean(eigZZ);
+    meanG(j) = mean(eigG);
+end
+
+x = 1:(Rsize/10);
+figure
+plot(x,meanR,'-o', x,meanY2,'-x', x,meanZZ,'-*', x,meanG, '-ro')
+legend('eigR','eigY^2','eigZZ', 'eigG');
+
+table = zeros((Rsize/10),4);
+table(:,1) = meanR;
+table(:,2) = meanY2;
+table(:,3) = meanZZ;
+table(:,4) = meanG;
+
+end

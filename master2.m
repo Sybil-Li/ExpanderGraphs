@@ -1,0 +1,19 @@
+function [ ] = master2()
+
+% Rsize 50, 80, 110, 140, Y degree = sqrt(n)
+sqrtR50 = inBetweenY(50,1);
+save('sqrtR50.mat','sqrtR50','-mat');
+sqrtR80 = inBetweenY(80,1);
+save('sqrtR80.mat','sqrtR80','-mat');
+sqrt1R110 = inBetweenY(110,1);
+save('sqrt1R110.mat','sqrtR110','-mat');
+
+
+% Rsize 50, 80, 110, 140, Y degree = log(n)
+logR50 = inBetweenY(50,2);
+save('logR50.mat','logR50','-mat');
+logR80 = inBetweenY(80,2);
+save('logR80.mat','logR80','-mat');
+log1R110 = inBetweenY(110,2);
+save('logR110.mat','logR110','-mat');
+end
