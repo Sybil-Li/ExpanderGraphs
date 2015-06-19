@@ -1,7 +1,7 @@
-function [ table ] = f1(Rsize)
-%Verifying Xiao's results
-%Compute the second largest eigenvalue of the normalized adjacency matrix
-%of the zigzag product of a random regular graph and a cyclic graph
+function [ table ] = f1(Rsize, mode)
+% Use Y of degree sqrt(n) or log(n) with X of increasing degree
+% mode 1: sqrt
+% mode 2: log
 
 eigX = zeros(1,100);
 eigY2 = zeros(1,100);
@@ -14,49 +14,48 @@ for j = 1:(Rsize/10)
         dY = ceil(sqrt(degree));
     else
         dY = ceil(log(degree));
+    end
 
     for i = 1:100
         X = randRegular(Rsize, degree);
         eigvalues = eig(X);
-        eigR(i) = eigvalues(Rsize-1);
+        eigX(i) = eigvalues(Rsize-1);
 
         Y = randRegular(degree, dY);
         eigvalues = eig(Y*Y);
-        eigR(i) = eigvalues(degree-1);
+        eigY2(i) = eigvalues(degree-1);
         
-        zzprod = zigzag(X,C);
-%         if (length(zzprod) < 3000)
-%             eigvalues = eig(zzprod);
-%             eigZZ(i) = eigvalues(Rsize*degree-1);
-%         else
-            eigZZ(i) = powerMethod(zzprod,4,0.000001);
-%         end
+        zzprod = zigzag(X,Y);
+        eigvalues = eig(zzprod);
+        eigZZ(i) = eigvalues(Rsize*degree-1);
         
-        G = randRegular(Rsize*degree, 4);
-%         if (length(G) < 3000)
-%             eigvalues = eig(G);
-%             eigG(i) = eigvalues(Rsize*degree-1);
-%         else
-            eigG(i) = powerMethod(G,4,0.000001);
-%         end
-            
-            
+        G = randRegular(Rsize*degree, dY*dY);
+        eigvalues = eig(G);
+        eigG(i) = eigvalues(Rsize*degree-1);
+  
     end
-    meanR(j) = mean(eigR);
+    meanX(j) = mean(eigX);
+    meanXnorm(j) = meanX(j)/degree;
     meanY2(j) = mean(eigY2);
+    meanY2norm(j) = meanY2(j)/(dY*dY);
     meanZZ(j) = mean(eigZZ);
+    meanZZnorm(j) = meanZZ(j)/(dY*dY);
     meanG(j) = mean(eigG);
+    meanGnorm(j) = meanG(j)/(dY*dY);
 end
+
+table = zeros((Rsize/10),8);
+table(:,1) = meanX;
+table(:,2) = meanXnorm;
+table(:,3) = meanY2;
+table(:,4) = meanY2norm;
+table(:,5) = meanZZ;
+table(:,6) = meanZZnorm;
+table(:,7) = meanG;
+table(:,8) = meanGnorm;
 
 x = 1:(Rsize/10);
 figure
-plot(x,meanR,'-o', x,meanY2,'-x', x,meanZZ,'-*', x,meanG, '-ro')
-legend('eigR','eigY^2','eigZZ', 'eigG');
-
-table = zeros((Rsize/10),4);
-table(:,1) = meanR;
-table(:,2) = meanY2;
-table(:,3) = meanZZ;
-table(:,4) = meanG;
-
+plot(x, meanXnorm ,'-o', x,meanY2norm,'-x', x,meanZZnorm,'-*', x,meanGnorm, '-ro')
+legend('eigX','eigY^2','eigZZ', 'eigG');
 end
