@@ -3,7 +3,7 @@ function [ output_args ] = xiao1()
 %Compute the second largest eigenvalue of the normalized adjacency matrix
 %of the zigzag product of a random regular graph and a cyclic graph
 
-degrees = [3,5,7,9,11];
+degrees = [11,21,31,41];
 Rsize = 50;
 eigR = zeros(1,length(degrees));
 eigC2 = zeros(1,length(degrees));

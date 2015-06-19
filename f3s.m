@@ -7,15 +7,15 @@ eigR = zeros(1,100);
 eigZZ = zeros(1,100);
 eigG = zeros(1,100);
 
-for j = 1:10
-    Rsize = j*10;
+for j = 1:5
+    Rsize = j*20;
     C = cyclic(degree);
     eigvalues = eig(C);
     meanC(j) = eigvalues(degree-1);
     eigvalues = eig(C*C);
     meanC2(j) = eigvalues(degree-1);
 
-    for i = 1:100
+    for i = 1:50
         R = randRegular(Rsize, degree);
         eigvalues = eig(R);
         eigR(i) = eigvalues(Rsize-1);
@@ -36,12 +36,12 @@ for j = 1:10
     meanG(j) = mean(eigG);
 end
 
-x = 1:10;
+x = 1:5;
 figure
 plot(x,meanR,'-o', x,meanZZ,'-*', x,meanG, '-x')
 legend('eigR','eigZZ', 'eigG');
 
-table = zeros((Rsize/10),5);
+table = zeros(5,5);
 table(:,1) = meanR;
 table(:,2) = meanC;
 table(:,3) = meanC2;

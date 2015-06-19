@@ -15,7 +15,7 @@ for j = 1:4
     eigvalues = eig(C*C);
     meanC2(j) = eigvalues(degree-1);
 
-    for i = 1:100
+    for i = 1:50
         R = randRegular(Rsize, degree);
         if (length(R) < 3000)
             eigvalues = eig(R);
