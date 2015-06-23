@@ -1,4 +1,4 @@
-function [ table ] = f1(Rsize, mode)
+function [ table ] = inBetweenY(Rsize, mode)
 % Use Y of degree sqrt(n) or log(n) with X of increasing degree
 % mode 1: sqrt
 % mode 2: log
