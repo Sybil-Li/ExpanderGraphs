@@ -11,7 +11,7 @@ for j = 1:(Rsize/10)
     degree = j*10;
     count = 0;
     
-    for i = 1:1
+    for i = 1:100
         R = randRegular(Rsize, degree);
         eigvalues = eig(R);
         eigR(i) = eigvalues(Rsize-1);
