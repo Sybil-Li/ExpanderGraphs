@@ -16,7 +16,7 @@ for j = 1:(Rsize/10)
         eigvalues = eig(R);
         eigR(i) = eigvalues(Rsize-1);
 
-        Y = cyclic3(degree, 3);
+        Y = cyclic3(degree);
         eigvalues = eig(Y*Y);
         eigY2(i) = eigvalues(degree-1);
         
