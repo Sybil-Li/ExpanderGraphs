@@ -17,10 +17,12 @@ end
 
 % replace two edges
 % first find two nodes in the same set
-steps = randi(n/2)*2;
-start = randi(n/2);
-destination = start;
+start = 1;
+destination = 1;
 while (destination == start)
+    steps = randi(n/2)*2;
+    start = randi(n/2);
+    destination = start;
     for i = 1:steps
         destination = B(destination,randi(d));
     end
