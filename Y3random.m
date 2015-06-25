@@ -77,9 +77,9 @@ for j = 1:(Rsize/10)
     meanGlamda(j) = mean(eigGlamda);
     meanGlamda1(j) = mean(eigGlamda1);
     
-    countX(i) = Rcount;
-    countY(i) = Ycount;
-    countG(i) = Gcount;
+    countX(j) = Rcount;
+    countY(j) = Ycount;
+    countG(j) = Gcount;
     ramanujan(j) = count/100;
 end
 
