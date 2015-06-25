@@ -21,6 +21,8 @@ start = 1;
 destination = 1;
 while (destination == start)
     steps = randi(n/2)*2;
+%   reassigin start every time to avoide infinite loop
+%   possible infinite loop condition if start is a vertex with 3 loops
     start = randi(n/2);
     destination = start;
     for i = 1:steps

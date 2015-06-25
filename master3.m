@@ -1,8 +1,8 @@
 function [ ] = master3()
 
 % Rsize 50, 80, 110, Y degree = 3, random
-R50Y3r = Y3random(50);
-save('R50Y3r.mat','R50Y3r','-mat');
+% R50Y3r = Y3random(50);
+% save('R50Y3r.mat','R50Y3r','-mat');
 R80Y3r = Y3random(80);
 save('R80Y3r.mat','R80Y3r','-mat');
 R110Y3r = Y3random(110);
