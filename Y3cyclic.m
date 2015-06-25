@@ -51,11 +51,11 @@ for j = 1:(Rsize/10)
         end
 
         Gcount = Gcount + 1;
-        G = randRegular(Rsize*degree, 9);
+        G = bipartiteRandRegular(Rsize*degree, 9);
         eigvalues = eig(G);
         while (eigvalues(Rsize*degree)-eigvalues(Rsize*degree-1) < 10^(-8))
             Gcount = Gcount + 1;
-            G = randRegular(Rsize*degree, 9);
+            G = bipartiteRandRegular(Rsize*degree, 9);
             eigvalues = eig(G);
         end
         eigGlamda1(i) = eigvalues(Rsize*degree-1);
