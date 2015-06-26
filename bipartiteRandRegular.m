@@ -1,11 +1,13 @@
 function [ A ] = bipartiteRandRegular(n, d)
+% generates a bipartite random regular graph with degree d
+% returns its adjacency matrix
+
 % Adjacency matrix
 A = zeros(n,n);
 % Adjacency list
 B = zeros(n,3);
 
 s = 1:(n/2);
-
 % first generate a d-regular bipartite graph in adjacency list
 % representation
 for i = 1:d

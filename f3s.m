@@ -1,7 +1,7 @@
 function [ table ] = f3s(degree)
-%Verifying Xiao's results
-%Compute the second largest eigenvalue of the normalized adjacency matrix
-%of the zigzag product of a random regular graph and a cyclic graph
+% X is degree 3 random regular
+% |X| = 20, 40, 60, 80, 100
+% Y = C3
 
 eigR = zeros(1,100);
 eigZZ = zeros(1,100);

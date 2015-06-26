@@ -3,6 +3,9 @@ function [ table ] = f1(Rsize)
 %Compute the second largest eigenvalue of the normalized adjacency matrix
 %of the zigzag product of a random regular graph and a cyclic graph
 
+% X is random regular, eg. if |X| = 50, d = 11,21,31,41,51
+% Y is cyclic graph graph of size = d
+
 eigR = zeros(1,100);
 eigZZ = zeros(1,100);
 eigG = zeros(1,100);
