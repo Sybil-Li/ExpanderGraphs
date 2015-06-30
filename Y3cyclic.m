@@ -1,5 +1,5 @@
 function [ table ] = Y3cyclic(Rsize)
-% X is random |Y|-regular
+% X is random |Y|-regular (connected)
 % Y is 3-regular cyclic
 
 samplesize = 100;

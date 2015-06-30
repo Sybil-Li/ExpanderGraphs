@@ -1,6 +1,6 @@
 function [ ] = master3()
 
-% Rsize 50, 80, 110, Y degree = 3, random
+% Rsize 50, 80, 110, with increasing degrees, Y degree = 3, random
 %R50Y3rconnected = Y3random(50);
 %save('R50Y3rconnected.mat','R50Y3rconnected','-mat');
 %R80Y3rconnected = Y3random(80);
@@ -20,7 +20,7 @@ function [ ] = master3()
 %R100Y3rconnected = Y3random(100);
 %save('R100Y3rconnected.mat','R100Y3rconnected','-mat');
 
-% % Rsize 50, 80, 110, Y degree = 3, cycle looking
+% % Rsize 50, 80, 110, with increasing degrees, Y degree = 3, cycle looking
  R50Y3cconnected = Y3cyclic(50);
  save('R50Y3cconnected.mat','R50Y3cconnected','-mat');
  R80Y3cconnected = Y3cyclic(80);

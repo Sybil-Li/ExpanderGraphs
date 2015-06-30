@@ -1,6 +1,6 @@
 function [ table ] = Y3random(Rsize)
-% X is random |Y|-regular
-% Y is random 3-regular
+% X is random |Y|-regular (conneceted)
+% Y is random 3-regular (connected)
 
 samplesize = 100;
 
@@ -19,15 +19,20 @@ eigGlamda1 = zeros(1,samplesize);
 
 for j = 1:(Rsize/10)
     degree = j*10;
+% number of ramanujan
     count = 0;
+% number of R that we have to generate to ensure connectedness
     Rcount = 0;
+% number of Y that we have to generate to ensure connectedness
     Ycount = 0;
+% number of G that we have to generate to ensure connectedness
     Gcount = 0;
     
     for i = 1:samplesize
         Rcount = Rcount + 1;
         R = randRegular(Rsize, degree);
         eigvalues = eig(R);
+        % if (eig(size-1)==d) then graph is disconnected, regenerate graph
         while (eigvalues(Rsize)-eigvalues(Rsize-1) < 10^(-8))
             Rcount = Rcount + 1;
             R = randRegular(Rsize, degree);
@@ -39,6 +44,7 @@ for j = 1:(Rsize/10)
         Ycount = Ycount + 1;
         Y = noLoopRandRegular(degree, 3);
         eigvalues = eig(Y);
+        % if (eig(size-1)==d) then graph is disconnected, regenerate graph
         while (eigvalues(degree)-eigvalues(degree-1) < 10^(-8))
             Ycount = Ycount + 1;
             Y = noLoopRandRegular(degree, 3);
@@ -59,6 +65,7 @@ for j = 1:(Rsize/10)
         Gcount = Gcount + 1;
         G = bipartiteRandRegular(Rsize*degree, 9);
         eigvalues = eig(G);
+        % if (eig(size-1)==d) then graph is disconnected, regenerate graph
         while (eigvalues(Rsize*degree)-eigvalues(Rsize*degree-1) < 10^(-8))
             Gcount = Gcount + 1;
             G = bipartiteRandRegular(Rsize*degree, 9);

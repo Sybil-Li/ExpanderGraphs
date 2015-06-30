@@ -1,4 +1,8 @@
 function [ A ] = noLoopRandRegular(n, d)
+% Returns the adjacency matrix of a random d-regular graph of size n
+% the graph contains no self loops and guarantees an odd cycle
+% n must be even
+
 % Adjacency matrix
 A = zeros(n,n);
 % Adjacency list
