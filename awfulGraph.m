@@ -1,6 +1,9 @@
 function [ A ] = awfulGraph( n )
-%returns the adjacency matrix of a cyclic graph of size n
-%   param: n number of vertices
+%returns the adjacency matrix of an awful graph of size n
+% awful graph has degree d=n-1; we first have an complete graph K(n-1),
+% then we add an extra vertex p, and connect it to an arbitrary vertex in the
+% complete graph, and then add n-2 self loop to p and then add one self loop to every vertex other than p. 
+%   param: n number of vertices, size of the graph
 
 A = ones(n,n);
 for i = 1:n-1
